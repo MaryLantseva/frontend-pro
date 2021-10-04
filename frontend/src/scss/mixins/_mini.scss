@@ -1,0 +1,42 @@
+@mixin bg-cover {
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+@mixin flex {
+  display: flex;
+}
+
+@mixin flex-v-center {
+  display: flex;
+  align-items: center;
+}
+
+@mixin flex-h-center {
+  display: flex;
+  justify-content: center;
+}
+
+@mixin flex-all-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-all-sb {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@mixin title-second {
+  font-size: 18px;
+  line-height: 25px;
+  font-weight: 700;
+}
+
+@mixin main-text {
+  font-size: 14px;
+  line-height: 19px;
+}
