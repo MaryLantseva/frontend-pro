@@ -4,25 +4,157 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="theme-color" content="#111111">
   <title>База данных клиентов</title>
-  <link rel="stylesheet" href="css/vendor.css">
-  <link rel="stylesheet" href="css/main.css">
+  <link rel="ico" href="favicon.ico">
 </head>
 
 <body>
+  <div class="form form--hidden">
+    <form class="form__container">
+      <div class="form__container-up">
+        <div class="form__up">
+          <h2 class="form__title title-reset">Новый клиент</h2>
+          <button class="form__btn btn-reset">
+            <svg class="form__cross">
+              <use xlink:href="#cross"></use>
+            </svg>
+          </button>
+        </div>
+        <div class="form__item">
+          <input id="input-1" class="form__surname form__input" type="text" required>
+          <label for="input-1" class="form__input-label form__label">Фамилия<span
+              class="form__input-required">*</span></label>
+        </div>
+        <div class="form__item">
+          <input id="input-2" class="form__name form__input" type="text" required>
+          <label for="input-2" class="form__input-label form__label">Имя<span
+              class="form__input-required">*</span></label>
+        </div>
+        <div class="form__item">
+          <input id="input-3" class="form__lastname form__input" type="text">
+          <label for="input-3" class="form__input-label form__label">Отчество</label>
+        </div>
+      </div>
+      <div class="form__add-contact">
+        <!-- ------------------------------------------ -->
+        <ul class="form__list-contacts list-reset">
+          <!-- <li class="form__contact contact">
+            
+              <select class="select" name="select">
+                <option value="tel" selected>Телефон</option>
+                <option value="fb">Facebook</option>
+                <option value="vk">Vk</option>
+                <option value="Email">Email</option>
+                <option value="other">Доп. телефон</option>
+              </select>
+            
+            <input class="contact__input" type="text">
+            <button class="contact__btn btn-reset">
+              <svg class="contact__svg">
+                <use xlink:href="#remove"></use>
+              </svg>
+            </button>
+          </li> -->
+        </ul>
+        <!-- ------------------------------------------- -->
+        <button class="form__btn-add btn-reset">
+          <svg class="form__add">
+            <use xlink:href="#add-contact"></use>
+          </svg>
+          Добавить контакт</button>
+      </div>
+      <button class="form__save btn-reset">Сохранить</button>
+      <button class="form__cansel btn-reset">Отмена</button>
+    </form>
+  </div>
   <div class="site-container">
-    @include('partials/header.html')
+    <header class="header">
+      <div class="header__container container">
+        <img class="header__img" src="assets/img/logo.png" alt="Логотип оффлайн школы Skillbus">
+        <input class="header__input" type="text" placeholder="Введите запрос">
+      </div>
+    </header>
     <main class="main">
-      @include('partials/form-add.html')
-      @include('partials/main.html')
-      
+      <div class="main__container container">
+        <h1 class="main__title title-reset">Клиенты</h1>
+        <table class=" main__table table" cellspacing="0">
+          <thead>
+            <tr>
+              <th class="table__title">
+                <span class="table__title-text">
+                  ID
+                  <svg class="table__arrow">
+                    <use xlink:href="#arrow"></use>
+                  </svg>
+                </span>
+              </th>
+              <th class="table__title">
+                <span class="table__title-text">
+                  Фамилия Имя Отчество
+                  <svg class="table__arrow table__arrow-rotate">
+                    <use xlink:href="#arrow"></use>
+                  </svg>
+                  <span class="table__arrow-text">А-Я</span>
+                </span>
+              </th>
+              <th class="table__title">
+                <span class="table__title-text">
+                  Дата и время создания
+                  <svg class="table__arrow table__arrow-rotate">
+                    <use xlink:href="#arrow"></use>
+                  </svg>
+                </span>
+              </th>
+              <th class="table__title">
+                <span class="table__title-text">
+                  Последние изменения
+                  <svg class="table__arrow table__arrow-rotate">
+                    <use xlink:href="#arrow"></use>
+                  </svg>
+                </span>
+              </th>
+              <th class="table__title">Контакты</th>
+              <th class="table__title" colspan="2">Действия</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="table__row">
+              <td class="table__row-item table__id">123455</td>
+              <td class="table__row-item table__full-name">Скворцов Денис Юрьевич</td>
+              <td class="table__row-item table__date-add">21.02.2021 <span class="table__time-add">12:41</span></td>
+              <td class="table__row-item table__date-change">21.02.2021 <span class="table__time-change">14:50</span>
+              </td>
+              <td class="table__row-item">123455</td>
+              <td class="table__row-item">
+                <button class="table__change btn-reset">
+                  <svg class="table__change-svg">
+                    <use xlink:href="#change"></use>
+                  </svg>
+                  <span class="table__change-text">Изменить</span>
+                </button>
+              </td>
+              <td class="table__row-item">
+                <button class="table__remove btn-reset">
+                  <svg class="table__remove-svg">
+                    <use xlink:href="#remove"></use>
+                  </svg>
+                  <span class="table__remove-text">Удалить</span>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <button class="main__btn btn-reset">
+          <svg class="main__btn-svg">
+            <use xlink:href="#add-client"></use>
+          </svg>
+          Добавить клиента
+        </button>
+      </div>
     </main>
   </div>
-  <!-- <script src="js/vendor.js"></script> -->
-  <script src="js/main.js"></script>
 
 </body>
 

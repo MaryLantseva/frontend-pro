@@ -1,0 +1,12 @@
+// // базовые подключения
+@import "vars";
+@import "mixins";
+@import "./settings";
+@import './vars';
+
+// // подключения компонентов страницы
+@import "./components/header";
+@import "./components/main";
+
+// // подключения форм страницы
+@import "./components/formAdd";

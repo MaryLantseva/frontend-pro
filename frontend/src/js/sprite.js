@@ -1,0 +1,7 @@
+import '../assets/img/svg/add-contact.svg'
+import '../assets/img/svg/add-client.svg'
+import '../assets/img/svg//add-contact-hover.svg'
+import '../assets/img/svg/arrow.svg'
+import '../assets/img/svg/change.svg'
+import '../assets/img/svg/cross.svg'
+import '../assets/img/svg/remove.svg'

@@ -1,0 +1,226 @@
+.form {
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: auto;
+  display: flex;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba($color: #000000, $alpha: 0.5);
+  z-index: 2;
+  opacity: 1;
+  transform: none;
+  transition: transform .4s linear, opacity .3s linear;
+
+  &--hidden {
+    opacity: 0;
+    transform: translateY(-1000px);
+  }
+
+  &__container {
+    margin: 0 auto;
+    padding-bottom: 25px;
+    width: 450px;
+    background-color: var(--white);
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__container-up {
+    display: flex;
+    flex-direction: column;
+    padding: 15px 15px 0 30px;
+    margin-bottom: 26px;
+  }
+
+  &__up {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__title {
+    @include title-second;
+    margin-bottom: 15px;
+    font-weight: 700;
+  }
+
+  &__cross {
+    width: 20px;
+    height: 20px;
+    fill: var(--grey);
+    transition: fill .3s linear;
+
+    &:hover {
+      fill: var(--black);
+    }
+  }
+
+  &__item {
+    position: relative;
+    height: 41px;
+
+    &:not(:last-child) {
+      margin-bottom: 15px;
+    }
+  }
+
+  &__input-label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    @include main-text;
+    color: var(--grey);
+    pointer-events: none;
+    transition: all .3s linear;
+  }
+
+  &__input-required {
+    color: var(--violet);
+    font-size: 16px;
+    transition: all .3s linear;
+  }
+
+
+  &__add-contact {
+    padding-top: 8px;
+    padding-bottom: 8px;
+    margin-bottom: 25px;
+    display: flex;
+    flex-direction: column;
+    background-color: rgba($color: #C8C5D1, $alpha: 0.3);
+    transition: padding .3s linear;
+
+    &--active {
+      padding-bottom: 25px;
+    }
+
+    // &:not(:last-child) {
+    //   margin-bottom: 15px;
+    // }
+  }
+
+  &__list-contacts {
+    transition: padding .3s linear;
+
+    &--active {
+      padding: 25px 30px 10px 30px;
+    }
+    
+  }
+
+  &__add {
+    margin-right: 5px;
+    width: 14px;
+    height: 14px;
+  }
+
+  &__btn-add {
+    // padding-left: 20px;
+    align-self: center;
+    font-weight: var(--fw-demibold);
+    // background: url("#add-contact") no-repeat left center;
+    transition: color .2s linear, background-image .3s linear;
+
+    &:hover,
+    &:active {
+      color: var(--violet);
+      // background: url("#add-contact-hover") no-repeat left center;
+    }
+  }
+
+  &__save {
+    padding: 12px 35px;
+    margin-bottom: 5px;
+    align-self: center;
+    color: var(--white);
+    background-color: var(--violet);
+    transition: background-color .3s linear;
+
+    &:hover {
+      background-color: var(--bg-btn-hover);
+    }
+
+    &:active {
+      background-color: var(--bg-btn-active);
+    }
+  }
+
+  &__cansel {
+    align-self: center;
+    border-bottom: 1px solid var(--black);
+    font-size: 12px;
+    line-height: 16px;
+    transition: color .3s linear, border-bottom .3s linear;
+
+    &:hover {
+      color: var(--violet);
+      border-bottom: 1px solid var(--violet);
+    }
+  }
+}
+
+.form__input {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  width: 100%;
+  outline: none;
+  border: none;
+  border-bottom: 1px solid var(--border-b-form);
+
+  &:focus+label {
+    top: -10px;
+    font-size: 10px;
+  }
+
+  &:focus+label>span {
+    top: -10px;
+    font-size: 10px;
+  }
+}
+
+
+.contact {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+   
+
+    &__input {
+      display: block;
+      padding: 8px 12px;
+      height: 37px;
+      width: 100%;
+      outline: none;
+      border: 1px solid var(--grey);
+      margin-right: -1px;
+
+      &::placeholder {
+        @include main-text;
+        color: var(--grey);
+      }
+    }
+
+    &__btn {
+      display: flex;
+      max-height: 37px;
+      padding: 10px 6px;
+      align-items: center;
+      border: 1px solid var(--grey);
+      transition: border .3s linear;
+
+      &:hover {
+        border: 1px solid var(--red);
+        & svg {
+          fill: var(--red);
+        }
+      }
+    }
+
+    &__svg {
+      width: 16px;
+      height: 16px;
+      fill: var(--grey);
+      transition: fill .3s linear;
+    }
+  }

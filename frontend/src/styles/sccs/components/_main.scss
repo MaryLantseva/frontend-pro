@@ -1,0 +1,167 @@
+.main {
+  &__container {
+    padding-top: 40px;
+    padding-bottom: 40px;
+    max-width: 1186px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__title {
+    margin-bottom: 26px;
+    font-family: 'Open Sans', sans-serif;
+    font-style: normal;
+    font-weight: var(--fw-bold);
+    font-size: 24px;
+    line-height: 33px;
+  }
+
+  &__table {
+    border-collapse: collapse;
+    margin-bottom: 40px;
+  }
+
+  &__btn {
+    align-self: center;
+    padding: 14px 26px;
+    background-color: var(--white);
+    font-weight: 600;
+    @include main-text;
+    color: var(--violet);
+    border: 1px solid var(--violet);
+    transition: background-color .3s linear, color .3s linear;
+
+
+  // ---------------hovers&actives--------------------
+    
+    &:hover {
+      background-color: var(--bg-btn-hover);
+      color: var(--white);
+    }
+
+    &:active {
+      background: var(--bg-btn-active);
+      color: var(--white);
+    }
+
+    &:hover &-svg,
+    &:active &-svg {
+      fill: var(--white);
+    }
+  // -------------------------------------------------------------
+  }
+
+  &__btn-svg {
+    fill: var(--violet);
+    width: 22px;
+    height: 16px;
+    margin-right: 10px;
+    transition: fill .3s linear;
+  }
+
+
+}
+
+
+.table {
+  &__row {
+    background-color: var(--white);
+  }
+
+  &__title {
+    text-align: left;
+    padding: 10px 20px 10px 20px;
+    font-weight: var(--fw-normal);
+    font-size: 12px;
+    line-height: 16px;
+    color: var(--grey);
+  }
+
+  &__title-text {
+    display: flex;
+    align-items: center;
+  }
+
+  &__arrow {
+    width: 12px;
+    height: 12px;
+  }
+
+  &__arrow-rotate {
+    transform: rotate(180deg);
+  }
+
+  &__arrow-text {
+    display: inline-block;
+    color: var(--violet);
+    font-family: inherit;
+    font-style: normal;
+    font-weight: var(--fw-normal);
+    font-size: 10px;
+    line-height: 12px;
+  }
+
+  &__row-item {
+    padding: 20px;
+    width: max-content;
+    text-align: left;
+    border-bottom: 1px solid #C8C5D1;
+    @include main-text;
+    font-weight: var(--fw-normal);
+  }
+
+  &__id {
+    font-size: 12px;
+    line-height: 16px;
+    color: var(--grey);
+  }
+
+  &__full-name,
+  &__date-add,
+  &__date-change,
+  &__change,
+  &__remove {
+    color: var(--black);
+  }
+
+  &__change,
+  &__remove {
+    display: flex;
+  }
+
+  &__time-add,
+  &__time-change {
+    color: var(--grey);
+  }
+
+  &__change-svg,
+  &__remove-svg {
+    display: inline-block;
+    align-self: flex-start;
+    width: 18px;
+    height: 18px;
+  }
+
+  &__remove-svg {
+    fill: var(--red);
+  }
+
+  &__change-text,
+  &__remove-text {
+    display: inline-block;
+    cursor: pointer;
+    transition: color .3s linear;
+  }
+
+  // ---------------hovers&actives--------------------
+
+  &__change-text:hover,
+  &__change-text:active {
+    color: var(--violet);
+  }
+
+  &__remove-text:hover,
+  &__remove-text:active {
+    color: var(--red);
+  }
+}
