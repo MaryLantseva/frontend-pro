@@ -1,2 +1,3 @@
 
-import './choices.min'
+import './choices.min';
+import './imask';

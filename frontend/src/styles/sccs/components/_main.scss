@@ -32,8 +32,8 @@
     transition: background-color .3s linear, color .3s linear;
 
 
-  // ---------------hovers&actives--------------------
-    
+    // ---------------hovers&actives--------------------
+
     &:hover {
       background-color: var(--bg-btn-hover);
       color: var(--white);
@@ -48,7 +48,8 @@
     &:active &-svg {
       fill: var(--white);
     }
-  // -------------------------------------------------------------
+
+    // -------------------------------------------------------------
   }
 
   &__btn-svg {
@@ -64,6 +65,7 @@
 
 
 .table {
+
   &__row {
     background-color: var(--white);
   }
@@ -74,12 +76,25 @@
     font-weight: var(--fw-normal);
     font-size: 12px;
     line-height: 16px;
-    color: var(--grey);
   }
 
   &__title-text {
     display: flex;
     align-items: center;
+  }
+
+  &__text {
+    display: inline-block;
+    color: var(--grey);
+    transition: color .3s linear;
+
+    &--active {
+      color: var(--violet);
+    }
+  }
+
+  &__title-date {
+    align-items: flex-end;
   }
 
   &__arrow {
@@ -116,10 +131,12 @@
     color: var(--grey);
   }
 
+  &__full-name {
+    width: 240px;
+  }
+
   &__full-name,
-  &__date-add,
-  &__date-change,
-  &__change,
+  &__date &__change,
   &__remove {
     color: var(--black);
   }
@@ -129,8 +146,12 @@
     display: flex;
   }
 
-  &__time-add,
-  &__time-change {
+  &__date {
+    display: inline-block;
+    margin-right: 10px;
+  }
+
+  &__time {
     color: var(--grey);
   }
 
@@ -153,6 +174,33 @@
     transition: color .3s linear;
   }
 
+  &__contact {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 115px;
+  }
+
+  &__btns {
+    display: flex;
+    align-items: center;
+    @include mobile {
+      display: block;
+    }
+  }
+
+  &__change {
+    margin-right: 30px;
+    @include mobile {
+      margin-right: 0;
+      margin-bottom: 5px;
+    }
+  }
+
+  &__btn-sort:hover &__text {
+    color: var(--black);
+  }
+
   // ---------------hovers&actives--------------------
 
   &__change-text:hover,
@@ -164,4 +212,97 @@
   &__remove-text:active {
     color: var(--red);
   }
+
+  // ----------------------tooltip---------------------
+  &__tooltip-icon {
+    width: 16px;
+    height: 16px;
+    fill: var(--violet);
+    opacity: 0.7;
+    transition: opacity .3s linear;
+  }
+
+  &__marker {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+  }
+
+  &__marker-empty {
+    padding: 1px;
+    padding-top: 2px;
+    width: 16px;
+    height: 16px;
+    font-weight: 600;
+    font-size: 8px;
+    line-height: 11px;
+    color: var(--black);
+    border-radius: 50%;
+    border: 1px solid var(--violet);
+    cursor: pointer;
+    transition: background-color .3s linear, color .3s linear, border .3s linear;
+
+    &:hover,
+    &:active {
+      background-color: var(--violet);
+      color: var(--white);
+      border: 1px solid var(--white);
+    }
+
+
+  }
+
+  &__tooltip {
+    display: inline-block;
+    position: relative;
+    margin-right: 7px;
+    margin-bottom: 7px;
+  }
+
+  &__tooltip-link {
+    font-weight: 700;
+    color: #B89EFF;
+    border-bottom: 1px solid #B89EFF;
+  }
+
+  &__popup {
+    opacity: 0;
+    width: max-content;
+    position: absolute;
+    bottom: 24px;
+    left: 50%;
+    padding: 7px 17px 14px 17px;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
+    color: #FFFFFF;
+    background-color: var(--black);
+    transition: opacity .3s linear;
+    box-sizing: border-box;
+    transform: translateX(-50%);
+    pointer-events: none;
+  }
+
+  &__marker:hover+&__popup,
+  &__marker:focus+&__popup {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  &__marker:hover &__tooltip-icon,
+  &__marker:focus &__tooltip-icon {
+    opacity: 1;
+  }
+
+  &__popup::before {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    border-style: solid;
+    border-width: 15px 7.5px 0 7.5px;
+    border-color: var(--black) transparent transparent transparent;
+    transform: translateX(-50%);
+  }
 }
+

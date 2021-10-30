@@ -1,5 +1,5 @@
 .form {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   overflow: auto;
@@ -22,9 +22,14 @@
     margin: 0 auto;
     padding-bottom: 25px;
     width: 450px;
+    overflow: auto;
     background-color: var(--white);
     display: flex;
     flex-direction: column;
+
+    &--more-contacts {
+      height: 100%;
+    }
   }
 
   &__container-up {
@@ -39,10 +44,23 @@
     justify-content: space-between;
   }
 
+  &__right {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+  }
+
   &__title {
     @include title-second;
-    margin-bottom: 15px;
     font-weight: 700;
+    margin-right: 9px;
+  }
+
+  &__id {
+    display: block;
+    font-size: 12px;
+    line-height: 16px;
+    color: var(--grey);
   }
 
   &__cross {
@@ -77,8 +95,13 @@
 
   &__input-required {
     color: var(--violet);
-    font-size: 16px;
+    font-size: 14px;
     transition: all .3s linear;
+  }
+
+  &__text-error {
+    display: block;
+    color: var(--red);
   }
 
 
@@ -94,10 +117,6 @@
     &--active {
       padding-bottom: 25px;
     }
-
-    // &:not(:last-child) {
-    //   margin-bottom: 15px;
-    // }
   }
 
   &__list-contacts {
@@ -106,7 +125,7 @@
     &--active {
       padding: 25px 30px 10px 30px;
     }
-    
+
   }
 
   &__add {
@@ -116,17 +135,29 @@
   }
 
   &__btn-add {
-    // padding-left: 20px;
+    padding-left: 20px;
     align-self: center;
     font-weight: var(--fw-demibold);
-    // background: url("#add-contact") no-repeat left center;
+    background: url(./../../assets/img/add-contact.png) no-repeat left center;
     transition: color .2s linear, background-image .3s linear;
+
+    &--hidden {
+      visibility: hidden;
+      height: 0;
+    }
 
     &:hover,
     &:active {
+      background: url(./../../assets/img/add-contact-hover.png) no-repeat center left;
       color: var(--violet);
-      // background: url("#add-contact-hover") no-repeat left center;
     }
+  }
+
+  &__error-message {
+    text-align: center;
+    font-size: 10px;
+    line-height: 14px;
+    color: var(--red);
   }
 
   &__save {
@@ -146,7 +177,7 @@
     }
   }
 
-  &__cansel {
+  &__cancel {
     align-self: center;
     border-bottom: 1px solid var(--black);
     font-size: 12px;
@@ -167,60 +198,137 @@
   outline: none;
   border: none;
   border-bottom: 1px solid var(--border-b-form);
+  transition: border .3s linear;
+
+  &--error {
+    border-bottom: 1px solid var(--red);
+  }
+
+  &--success {
+    border-bottom: 1px solid rgb(6, 185, 6);
+  }
 
   &:focus+label {
     top: -10px;
     font-size: 10px;
   }
+}
 
-  &:focus+label>span {
-    top: -10px;
-    font-size: 10px;
-  }
+.form__label--input {
+  top: -10px;
+  font-size: 10px;
 }
 
 
 .contact {
-    display: flex;
-    align-items: center;
-    margin-bottom: 15px;
-   
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
 
-    &__input {
-      display: block;
-      padding: 8px 12px;
-      height: 37px;
-      width: 100%;
-      outline: none;
-      border: 1px solid var(--grey);
-      margin-right: -1px;
+  &__text-error {
+    position: absolute;
+    bottom: -17px;
+    left: 0;
+    color: var(--red);
+  }
 
-      &::placeholder {
-        @include main-text;
-        color: var(--grey);
-      }
+  &__label {
+    position: relative;
+    height: 37px;
+    width: 100%;
+  }
+
+  &__input {
+    display: block;
+    padding: 8px 12px;
+    height: 100%;
+    width: 100%;
+    outline: none;
+    border: 1px solid var(--grey);
+    margin-right: -1px;
+
+    &--error {
+      border-bottom: 1px solid var(--red);
     }
 
-    &__btn {
-      display: flex;
-      max-height: 37px;
-      padding: 10px 6px;
-      align-items: center;
-      border: 1px solid var(--grey);
-      transition: border .3s linear;
-
-      &:hover {
-        border: 1px solid var(--red);
-        & svg {
-          fill: var(--red);
-        }
-      }
+    &--success {
+      border-bottom: 1px solid rgb(6, 185, 6);
     }
 
-    &__svg {
-      width: 16px;
-      height: 16px;
-      fill: var(--grey);
-      transition: fill .3s linear;
+    &::placeholder {
+      @include main-text;
+      color: var(--grey);
     }
   }
+
+  &__btn {
+    display: flex;
+    max-height: 37px;
+    padding: 10px 6px;
+    align-items: center;
+    border: 1px solid var(--grey);
+    transition: border .3s linear;
+
+    &:hover {
+      border: 1px solid var(--red);
+
+      & svg {
+        fill: var(--red);
+      }
+    }
+  }
+
+  &__svg {
+    width: 16px;
+    height: 16px;
+    fill: var(--grey);
+    transition: fill .3s linear;
+  }
+
+  // ------------------------tooltip on buttonDeleteContact---------------------
+
+  &__tooltip {
+    display: inline-block;
+    position: relative;
+  }
+
+  &__marker {
+    width: 16px;
+    height: 16px;
+  }
+
+  &__marker:hover+&__popup,
+  &__marker:focus+&__popup {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  &__popup {
+    opacity: 0;
+    width: max-content;
+    position: absolute;
+    bottom: 30px;
+    left: 0%;
+    padding: 7px 10px 7px 10px;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
+    color: #FFFFFF;
+    background-color: var(--black);
+    transition: opacity .3s linear;
+    box-sizing: border-box;
+    transform: translateX(-50%);
+    pointer-events: none;
+  }
+
+  &__popup::before {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 62%;
+    border-style: solid;
+    border-width: 15px 7.5px 0 7.5px;
+    border-color: var(--black) transparent transparent transparent;
+    transform: translateX(-50%);
+  }
+}

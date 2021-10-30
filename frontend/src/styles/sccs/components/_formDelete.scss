@@ -1,0 +1,31 @@
+.form-delete {
+  
+  z-index: 3;
+
+  &__title {
+    text-align: center;
+  }
+
+  &__paragraph {
+    align-self: center;
+    text-align: center;
+    max-width: 275px;
+    margin-bottom: 25px;
+  }
+
+  &__up {
+    margin-bottom: 11px;
+  }
+
+  &__container-up {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 0;
+  }
+
+  &__right {
+    display: block;
+    width: 100%;
+    margin: 0;
+  }
+}
