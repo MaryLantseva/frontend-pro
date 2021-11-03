@@ -86,6 +86,13 @@ export default class FormView {
       } else labelInput.classList.remove('form__label--input');
     })
 
+    input.addEventListener('blur', (e) => {
+      if (input.value !== '') {
+        const value = input.value.trim();
+        input.value = value[0].toUpperCase() + value.slice(1).toLowerCase();
+      }
+    })
+
     return input;
   }
 
@@ -152,7 +159,6 @@ export default class FormView {
         }
       });
     }
-
     this.form.classList.remove('form--hidden');
   }
 
@@ -255,8 +261,6 @@ export default class FormView {
             this.errorMessage.textContent = error;
           });
       } else if (validName && validSurname && validLastname && isValid && this.formId.textContent !== '') {
-
-
         const clientForSend = {};
         if (this.client.name !== this.inputName.value) {
           clientForSend.name = this.inputName.value;
@@ -408,6 +412,8 @@ export default class FormView {
     return false;
   }
 
+
+
   // очистка всех полей и контактов формы
   clearInputs() {
     const inputs = document.querySelectorAll('.form__input');
@@ -444,6 +450,7 @@ export default class FormView {
     }
   }
 
+  // закрытие формы с очисткой полей
   formHidden() {
     this.form.classList.add('form--hidden');
     this.clearInputs();

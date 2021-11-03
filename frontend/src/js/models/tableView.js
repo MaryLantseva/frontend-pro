@@ -79,8 +79,6 @@ export default class TableView {
     for (const client of this.arrayClients) {
       client.deleteContact();
     }
-
-
     this.arrayClients = [];
     this.logicalPath.getAllClients()
       .then(listClients => {

@@ -5,7 +5,6 @@ import '../styles/sccs/scss.scss'
 import './sprite'
 import './img'
 
-
 document.addEventListener('DOMContentLoaded', ()=> {
   new TableView();
 })
